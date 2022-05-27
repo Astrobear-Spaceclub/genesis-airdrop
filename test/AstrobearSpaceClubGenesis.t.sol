@@ -14,7 +14,7 @@ contract AstrobearSpaceClubGenesisTest is Test {
     uint256[] tokenIds;
 
     function setUp() public {
-        nftContract = new AstrobearSpaceClubGenesis("Astrobear Space Club Genesis", "ASCG", "ipfs://");
+        nftContract = new AstrobearSpaceClubGenesis("Astrobear Space Club Genesis", "ASCG", "ipfs://QmbUQHnXWgSgpPke6gcQaqvp2z6yeaHzZRvza7cQ2CiViC/");
         utils = new Utils();
         airdropUsers = utils.createUsers(200);
 
@@ -71,7 +71,7 @@ contract AstrobearSpaceClubGenesisTest is Test {
     }
 
     function testTokenUri() public {
-        nftContract.tokenURI(1);
+        assertEq("ipfs://QmbUQHnXWgSgpPke6gcQaqvp2z6yeaHzZRvza7cQ2CiViC/1", nftContract.tokenURI(1));
     }
 
     function testBatchMint() public {
