@@ -26,6 +26,10 @@ contract AstrobearSpaceClubGenesis is ERC721 {
         owner = newOwner;
     }
 
+    function setBaseUri(string memory newBaseUri) external onlyOwner {
+        baseUri = newBaseUri;
+    }
+
     function tokenURI(uint256 id) public view virtual override returns (string memory) {
         return string(abi.encodePacked(baseUri, uint2str(id)));
     }

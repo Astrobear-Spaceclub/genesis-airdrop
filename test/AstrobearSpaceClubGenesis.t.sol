@@ -70,6 +70,17 @@ contract AstrobearSpaceClubGenesisTest is Test {
         nftContract.setOwner(address(0));
     }
 
+    function testSetBaseUriFromNotOwnerWallet() public {
+        vm.prank(address(0));
+        vm.expectRevert(abi.encodeWithSignature("NotOwner()"));
+        nftContract.setBaseUri("ipfs://QmbUQHnXWgSgpPke6gcQaqvp2z6yeaHzZRvza7cQ2CiViC/");
+    }
+
+    function testSetBaseUri() public {
+        nftContract.setBaseUri("ipfs://QmbUQHnXWgSgpPke6gcQaqdddd6yeaHzZRvza7cQ2CiViC/");
+        assertEq("ipfs://QmbUQHnXWgSgpPke6gcQaqdddd6yeaHzZRvza7cQ2CiViC/1", nftContract.tokenURI(1));
+    }
+
     function testTokenUri() public {
         assertEq("ipfs://QmbUQHnXWgSgpPke6gcQaqvp2z6yeaHzZRvza7cQ2CiViC/1", nftContract.tokenURI(1));
     }
