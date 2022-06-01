@@ -36,8 +36,9 @@ contract AstrobearSpaceClubGenesis is ERC721 {
 
     function mint(address[] memory addresses) external onlyOwner {
         unchecked {
-            for (uint i=1; i<addresses.length; i++) {
-                _mint(addresses[i], i);
+            for (uint i=0; i<addresses.length; i++) {
+                uint256 tokenId = i+1;
+                _mint(addresses[i], tokenId);
             }
         }
     }
